@@ -1,7 +1,7 @@
 # Copyright Broadcom, Inc. All Rights Reserved.
 # SPDX-License-Identifier: APACHE-2.0
 
-name: sophia-deb12mdl404
+name: sophia-deb12mdl-dev
 services:
   mariadb:
     image: docker.io/bitnami/mariadb:latest
