@@ -19,3 +19,6 @@ $defaults['moodle']['pathtopython'] = '/usr/bin/python3';
 $defaults['moodle']['auth_instructions'] = 'Usuário: user
 Senha: bitnami';
 $defaults['moodle']['forcelogin'] = 1;
+
+$defaults['moodle']['debug'] = 'DEVELOPER';
+$defaults['moodle']['debugstringids'] = 1;
