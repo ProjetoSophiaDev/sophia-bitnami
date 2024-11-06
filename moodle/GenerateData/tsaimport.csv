@@ -1,0 +1,17 @@
+username,firstname,lastname,email,password,cohort1,idnumber
+s1,s1fn,s1ln,s1@student.test,)Ji0Sear#1,Students,6048764759382
+s2,s2fn,s2ln,s2@student.test,)Ji0Sear#1,Students,2194892411578
+s3,s3fn,s3ln,s3@student.test,)Ji0Sear#1,Students,5659387784080
+s4,s4fn,s4ln,s4@student.test,)Ji0Sear#1,Students,6097535139332
+s5,s5fn,s5ln,s5@student.test,)Ji0Sear#1,Students,1158714841858
+s6,s6fn,s6ln,s6@student.test,)Ji0Sear#1,Students,9894719659342
+s7,s7fn,s7ln,s7@student.test,)Ji0Sear#1,Students,2094711220186
+s8,s8fn,s8ln,s8@student.test,)Ji0Sear#1,Students,8339694775159
+s9,s9fn,s9ln,s9@student.test,)Ji0Sear#1,Students,7953304135256
+s10,s10fn,s10ln,s10@student.test,)Ji0Sear#1,Students,1230989101399
+t1,t1fn,t1ln,t1@teacher.test,4vXMIuWc%9,Teachers,6151090321730
+t2,t2fn,t2ln,t2@teacher.test,4vXMIuWc%9,Teachers,8691413145620
+t3,t3fn,t3ln,t3@teacher.test,4vXMIuWc%9,Teachers,0916345792302
+t4,t4fn,t4ln,t4@teacher.test,4vXMIuWc%9,Teachers,5841972076984
+t5,t5fn,t5ln,t5@teacher.test,4vXMIuWc%9,Teachers,6428071508423
+a1,a1fn,a1ln,a1@admin.test,a^8n9Ca_b^,Admins,5945992466109
