@@ -51,8 +51,8 @@ RUN mkdir -p /tmp/bitnami/pkg/cache/ ; cd /tmp/bitnami/pkg/cache/ ; \
     done
 
 RUN apt-get update -y
-RUN git clone --depth=1 --branch="MOODLE_404_STABLE" https://github.com/moodle/moodle.git /opt/bitnami/moodle
-RUN git clone --depth=1 --recursive --branch="main" https://github.com/ProjetoSophiaDev/moodle404plugins.git /tmp/mdlplugins
+RUN git clone --depth=1 --branch="MOODLE_405_STABLE" https://github.com/moodle/moodle.git /opt/bitnami/moodle
+RUN git clone --depth=1 --recursive --branch="main" https://github.com/ProjetoSophiaDev/moodle405plugins.git /tmp/mdlplugins
 RUN rsync -a /tmp/mdlplugins/moodle/* /opt/bitnami/moodle/
 RUN rm -rf /opt/bitnami/moodle/.git
 
@@ -79,7 +79,7 @@ RUN /opt/bitnami/scripts/moodle/postunpack.sh
 RUN /opt/bitnami/scripts/mysql-client/postunpack.sh
 ENV APACHE_HTTPS_PORT_NUMBER="" \
     APACHE_HTTP_PORT_NUMBER="" \
-    APP_VERSION="4.4.3" \
+    APP_VERSION="4.5+" \
     BITNAMI_APP_NAME="moodle" \
     LANG="en_US.UTF-8" \
     LANGUAGE="en_US:en" \
