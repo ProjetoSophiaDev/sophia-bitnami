@@ -43,6 +43,12 @@ services:
       # cURL allowed ports list, curlsecurityallowedport: 4000
       # cURL blocked hosts list curlsecurityblockedhosts: empty
       # Jobe server qtype_coderunner | jobe_host: host.docker.internal:4000
+  vpl:
+    image: jcrodriguezvpl/jail-alpine-full:latest
+    restart: always
+    ports:
+      - '5000:80'
+      # Lista de servidores de execução mod_vpl | jail_servers: host.docker.internal:5000
 volumes:
   mariadb_data:
     driver: local
