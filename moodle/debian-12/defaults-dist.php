@@ -19,3 +19,8 @@ $defaults['moodle']['pathtopython'] = '/usr/bin/python3';
 $defaults['moodle']['auth_instructions'] = 'Usuário: user
 Senha: bitnami';
 $defaults['moodle']['forcelogin'] = 1;
+
+// TODO
+$defaults['qtype_coderunner']['jobe_host'] = 'host.docker.internal:4000';
+$defaults['moodle']['curlsecurityblockedhosts'] = '';
+$defaults['moodle']['curlsecurityallowedport'] = array("4000", "80", "443");
