@@ -21,6 +21,6 @@ Senha: bitnami';
 $defaults['moodle']['forcelogin'] = 1;
 
 // TODO
-$defaults['qtype_coderunner']['jobe_host'] = 'host.docker.internal:4000';
-$defaults['moodle']['curlsecurityblockedhosts'] = '';
-$defaults['moodle']['curlsecurityallowedport'] = array("4000", "80", "443");
+// $defaults['qtype_coderunner']['jobe_host'] = 'host.docker.internal:4000';
+// $defaults['moodle']['curlsecurityblockedhosts'] = '';
+// $defaults['moodle']['curlsecurityallowedport'] = '4000 80 443';
