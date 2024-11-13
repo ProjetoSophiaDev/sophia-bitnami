@@ -54,7 +54,7 @@ RUN /opt/bitnami/php/bin/phpize
 RUN ./configure --with-php-config=/opt/bitnami/php/bin/php-config
 RUN make
 RUN make install
-RUM rm -rf bitnami redis-6.1.0 redis-6.1.0.tgz
+RUN rm -rf bitnami redis-6.1.0 redis-6.1.0.tgz
   
 RUN apt-get update -y
 RUN git clone --depth=1 --branch="MOODLE_405_STABLE" https://github.com/moodle/moodle.git /opt/bitnami/moodle
@@ -76,6 +76,9 @@ RUN update-locale LANG=C.UTF-8 LC_MESSAGES=POSIX && \
 RUN echo 'en_AU.UTF-8 UTF-8' >> /etc/locale.gen && locale-gen
 RUN echo 'en_US.UTF-8 UTF-8' >> /etc/locale.gen && locale-gen
 RUN echo 'pt_BR.UTF-8 UTF-8' >> /etc/locale.gen && locale-gen
+
+RUN echo "extension = apcu" > /opt/bitnami/php/lib/php.ini
+RUN echo "extension = redis" > /opt/bitnami/php/lib/php.ini
 
 COPY rootfs /
 RUN /opt/bitnami/scripts/locales/add-extra-locales.sh
