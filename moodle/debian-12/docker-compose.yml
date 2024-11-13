@@ -14,6 +14,13 @@ services:
       - MARIADB_COLLATE=utf8mb4_unicode_ci
     volumes:
       - 'mariadb_data:/bitnami/mariadb'
+  redis:
+    image: redis:alpine
+    restart: always
+    ports:
+      - '6379:6379'
+    volumes:
+      - 'redis_data:/data'
   moodle:
     #image: docker.io/bitnami/moodle:4.4
     build:
@@ -34,6 +41,7 @@ services:
       - 'moodledata_data:/bitnami/moodledata'
     depends_on:
       - mariadb
+      - redis
   jobe:
     image: trampgeek/jobeinabox:latest
     restart: always
@@ -55,4 +63,6 @@ volumes:
   moodle_data:
     driver: local
   moodledata_data:
+    driver: local
+  redis_data:
     driver: local
