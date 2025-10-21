@@ -18,16 +18,11 @@ def generate_env_file(filename='.env'):
     mariadb_password = custom_password()  # Custom password function
     mariadb_root_password = custom_password() 
     moodle_admin_password = custom_password() 
-    lldap_admin_password = custom_password() 
-    # Generate a random string that mimics a JWT secret
-    jwt_secret = secrets.token_urlsafe(64)  # Generates a secure 64-character secret
 
     # Content for .env file
     env_content = f"""MARIADB_PASSWORD={mariadb_password}
 MARIADB_ROOT_PASSWORD={mariadb_root_password}
 MOODLE_PASSWORD={moodle_admin_password}
-LLDAP_JWT={jwt_secret}
-LLDAP_PASSWORD={lldap_admin_password}
 """
     # Write to .env file
     try:
@@ -150,7 +145,7 @@ if __name__ == "__main__":
         output_filename = "defaults-dist.php"
         
         # Example 1: Downloading from GitHub URL
-        github_url = "https://raw.githubusercontent.com/AdrianoRuseler/mdlqa-bitnami/refs/heads/main/defaults-dist.php"
+        github_url = "https://raw.githubusercontent.com/ProjetoSophiaDev/sophia-bitnami/refs/heads/main/moodle/defaults-dist.php"
         print(f"\nProcessing GitHub URL: {github_url}")
         download_and_append_github_file(output_filename, github_url=github_url)
         
