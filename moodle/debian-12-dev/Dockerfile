@@ -13,11 +13,11 @@ LABEL com.vmware.cp.artifact.flavor="sha256:c50c90cfd9d12b445b011e6ad529f1ad3dae
       org.opencontainers.image.description="Application packaged by Broadcom, Inc." \
       org.opencontainers.image.documentation="https://github.com/bitnami/containers/tree/main/bitnami/moodle/README.md" \
       org.opencontainers.image.licenses="Apache-2.0" \
-      org.opencontainers.image.ref.name="4.4.3-debian-12-r1" \
+      org.opencontainers.image.ref.name="5.0.0-debian-12-r1" \
       org.opencontainers.image.source="https://github.com/bitnami/containers/tree/main/bitnami/moodle" \
       org.opencontainers.image.title="moodle" \
       org.opencontainers.image.vendor="Broadcom, Inc." \
-      org.opencontainers.image.version="4.4.3"
+      org.opencontainers.image.version="5.0.0"
 
 ENV OS_ARCH="${TARGETARCH:-amd64}" \
     OS_FLAVOUR="debian-12" \
@@ -29,15 +29,11 @@ SHELL ["/bin/bash", "-o", "errexit", "-o", "nounset", "-o", "pipefail", "-c"]
 RUN install_packages wget graphviz ghostscript python3 poppler-utils aspell dictionaries-common libaspell15 aspell-en aspell-pt-br aspell-doc spellutils rsync acl git ca-certificates cron curl libaudit1 libbrotli1 libbsd0 libbz2-1.0 libcap-ng0 libcom-err2 libcrypt1 libcurl4 libedit2 libexpat1 libffi8 libfftw3-double3 libfontconfig1 libfreetype6 libgcc-s1 libgcrypt20 libglib2.0-0 libgmp10 libgnutls30 libgomp1 libgpg-error0 libgssapi-krb5-2 libhashkit2 libhogweed6 libicu72 libidn2-0 libjpeg62-turbo libk5crypto3 libkeyutils1 libkrb5-3 libkrb5support0 liblcms2-2 libldap-2.5-0 liblqr-1-0 libltdl7 liblzma5 libmagickcore-6.q16-6 libmagickwand-6.q16-6 libmd0 libmemcached11 libncurses6 libnettle8 libnghttp2-14 libonig5 libp11-kit0 libpam0g libpcre2-8-0 libpcre3 libpng16-16 libpq5 libpsl5 libreadline8 librtmp1 libsasl2-2 libsodium23 libsqlite3-0 libssh2-1 libssl3 libstdc++6 libsybdb5 libtasn1-6 libtidy5deb1 libtinfo6 libunistring2 libuuid1 libwebp7 libx11-6 libxau6 libxcb1 libxdmcp6 libxext6 libxml2 libxslt1.1 libzip4 libzstd1 locales openssl procps zlib1g
 RUN mkdir -p /tmp/bitnami/pkg/cache/ ; cd /tmp/bitnami/pkg/cache/ ; \
     COMPONENTS=( \
-      "render-template-1.0.7-3-linux-${OS_ARCH}-debian-12" \
-#      "php-8.1.29-10-linux-${OS_ARCH}-debian-12" \
-#	  "php-8.2.23-1-linux-${OS_ARCH}-debian-12" \
-	  "php-8.3.11-2-linux-${OS_ARCH}-debian-12" \
-      "apache-2.4.62-3-linux-${OS_ARCH}-debian-12" \
-      "mysql-client-11.4.3-0-linux-${OS_ARCH}-debian-12" \
-#      "libphp-8.1.29-5-linux-${OS_ARCH}-debian-12" \
-#	  "libphp-8.2.23-0-linux-${OS_ARCH}-debian-12" \
-	  "libphp-8.3.11-0-linux-${OS_ARCH}-debian-12" \
+      "render-template-1.0.8-1-linux-${OS_ARCH}-debian-12" \
+      "php-8.3.23-4-linux-${OS_ARCH}-debian-12" \
+      "mysql-client-11.8.2-0-linux-${OS_ARCH}-debian-12" \
+      "libphp-8.3.23-2-linux-${OS_ARCH}-debian-12" \
+      "apache-2.4.64-0-linux-${OS_ARCH}-debian-12" \
 #      "moodle-4.4.3-0-linux-${OS_ARCH}-debian-12" \
     ) ; \
     for COMPONENT in "${COMPONENTS[@]}"; do \
@@ -51,14 +47,17 @@ RUN mkdir -p /tmp/bitnami/pkg/cache/ ; cd /tmp/bitnami/pkg/cache/ ; \
     done
 
 RUN apt-get update -y
-RUN git clone --depth=1 --branch="MOODLE_404_STABLE" https://github.com/moodle/moodle.git /opt/bitnami/moodle
-RUN git clone --depth=1 --recursive --branch="main" https://github.com/ProjetoSophiaDev/moodledev-plugins.git /tmp/mdlplugins
-RUN rsync -a /tmp/mdlplugins/moodle/* /opt/bitnami/moodle/
+RUN git clone --depth=1 --branch="MOODLE_500_STABLE" https://github.com/moodle/moodle.git /opt/bitnami/moodle
+RUN git clone --depth=1 --recursive --branch="main" https://github.com/AdrianoRuseler/mdldev-plugins.git /tmp/mdldevplugins
+RUN rsync -a /tmp/mdldevplugins/moodle/* /opt/bitnami/moodle/
+#RUN git clone --depth=1 --recursive --branch="main" https://github.com/ProjetoSophiaDev/moodle405plugins.git /tmp/mdlplugins
+#RUN rsync -a /tmp/mdlplugins/moodle/* /opt/bitnami/moodle/
 RUN rm -rf /opt/bitnami/moodle/.git
 
-RUN wget https://raw.githubusercontent.com/ProjetoSophiaDev/sophia-bitnami/main/moodle/debian-12/defaults-dist.php -O /opt/bitnami/moodle/local/defaults.php
+#RUN wget https://raw.githubusercontent.com/AdrianoRuseler/mdlqa-bitnami/main/defaults-dist.php -O #/opt/bitnami/moodle/local/defaults.php
+COPY defaults-dist.php /opt/bitnami/moodle/local/defaults.php
 
-RUN apt-get autoremove --purge -y wget rsync curl git && \
+RUN apt-get autoremove --purge -y wget rsync && \
     apt-get update && apt-get upgrade -y && \
     apt-get clean && rm -rf /var/lib/apt/lists /var/cache/apt/archives
 RUN localedef -c -f UTF-8 -i en_US en_US.UTF-8
@@ -79,11 +78,19 @@ RUN /opt/bitnami/scripts/moodle/postunpack.sh
 RUN /opt/bitnami/scripts/mysql-client/postunpack.sh
 ENV APACHE_HTTPS_PORT_NUMBER="" \
     APACHE_HTTP_PORT_NUMBER="" \
-    APP_VERSION="4.4.3" \
+    APP_VERSION="5.0+" \
     BITNAMI_APP_NAME="moodle" \
     LANG="en_US.UTF-8" \
     LANGUAGE="en_US:en" \
     PATH="/opt/bitnami/common/bin:/opt/bitnami/php/bin:/opt/bitnami/php/sbin:/opt/bitnami/apache/bin:/opt/bitnami/postgresql/bin:/opt/bitnami/mysql/bin:$PATH"
+
+# Install Composer (if not already present in the image)
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN git clone --depth=1 --branch="master" https://github.com/tmuras/moosh.git /opt/bitnami/moosh
+RUN cd /opt/bitnami/moosh && composer install
+RUN ln -s /opt/bitnami/moosh/moosh.php /usr/local/bin/moosh
+# Ensure Moosh is executable and test it
+RUN cd /opt/bitnami/moodle && moosh --list-commands || echo "Moosh installation failed"
 
 EXPOSE 8080 8443
 
