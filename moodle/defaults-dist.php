@@ -1,6 +1,7 @@
 <?php
-$defaults['moodle']['summary'] = 'Moodle QA Site! '; // for core settings
+$defaults['moodle']['summary'] = 'Sophia Dev Site! '; // for core settings
 $defaults['moodle']['custommenuitems'] = 'Theme
+-Academi | ?theme=academi
 -Boost | ?theme=boost
 -Classic | ?theme=classic
 ';
@@ -18,3 +19,6 @@ $defaults['moodle']['pathtopdftoppm'] = '/usr/bin/pdftoppm';
 $defaults['moodle']['pathtopython'] = '/usr/bin/python3';
 
 $defaults['moodle']['forcelogin'] = 1;
+        
+$defaults['moodle']['debug'] = 'DEVELOPER';
+$defaults['moodle']['debugstringids'] = 1;
