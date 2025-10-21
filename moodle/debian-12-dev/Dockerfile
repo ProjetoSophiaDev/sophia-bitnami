@@ -51,8 +51,8 @@ RUN apt-get update -y
 RUN git clone --depth=1 --branch="MOODLE_500_STABLE" https://github.com/moodle/moodle.git /opt/bitnami/moodle
 RUN git clone --depth=1 --recursive --branch="main" https://github.com/AdrianoRuseler/mdldev-plugins.git /tmp/mdldevplugins
 RUN rsync -a /tmp/mdldevplugins/moodle/* /opt/bitnami/moodle/
-#RUN git clone --depth=1 --recursive --branch="main" https://github.com/ProjetoSophiaDev/moodle405plugins.git /tmp/mdlplugins
-#RUN rsync -a /tmp/mdlplugins/moodle/* /opt/bitnami/moodle/
+RUN git clone --depth=1 --recursive --branch="main" https://github.com/ProjetoSophiaDev/moodle500plugins.git /tmp/mdlplugins
+RUN rsync -a /tmp/mdlplugins/moodle/* /opt/bitnami/moodle/
 RUN rm -rf /opt/bitnami/moodle/.git
 
 #RUN wget https://raw.githubusercontent.com/AdrianoRuseler/mdlqa-bitnami/main/defaults-dist.php -O #/opt/bitnami/moodle/local/defaults.php
