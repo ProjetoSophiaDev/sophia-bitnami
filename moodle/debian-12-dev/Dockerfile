@@ -66,8 +66,8 @@ RUN find / -perm /6000 -type f -exec chmod a-s {} \; || true
 RUN sed -i -e '/pam_loginuid.so/ s/^#*/#/' /etc/pam.d/cron
 RUN update-locale LANG=C.UTF-8 LC_MESSAGES=POSIX && \
     DEBIAN_FRONTEND=noninteractive dpkg-reconfigure locales
-RUN echo 'en_AU.UTF-8 UTF-8' >> /etc/locale.gen && locale-gen
-RUN echo 'en_US.UTF-8 UTF-8' >> /etc/locale.gen && locale-gen
+RUN echo 'en_AU.UTF-8 UTF-8' >> /etc/locale.gen 
+RUN echo 'en_US.UTF-8 UTF-8' >> /etc/locale.gen
 RUN echo 'pt_BR.UTF-8 UTF-8' >> /etc/locale.gen && locale-gen
 
 COPY rootfs /
