@@ -65,19 +65,19 @@ services:
       MP_SMTP_AUTH_ALLOW_INSECURE: 1 
     networks:
       - mdl_mariadb_net
-  phpmyadmin:
-    image: linuxserver/phpmyadmin:latest
-    ports:
-      - '8080:80'
-    environment:
-      - PMA_HOST=mariadb
-      - PMA_PORT=3306
-      - PMA_USER=root
-      - PMA_PASSWORD=${MARIADB_ROOT_PASSWORD}
-    depends_on:
-      - mariadb
-    networks:
-      - mdl_mariadb_net
+  # phpmyadmin:
+  #   image: linuxserver/phpmyadmin:latest
+  #   ports:
+  #     - '8080:80'
+  #   environment:
+  #     - PMA_HOST=mariadb
+  #     - PMA_PORT=3306
+  #     - PMA_USER=root
+  #     - PMA_PASSWORD=${MARIADB_ROOT_PASSWORD}
+  #   depends_on:
+  #     - mariadb
+  #   networks:
+  #     - mdl_mariadb_net
 volumes:
   mariadb_data:
     driver: local
