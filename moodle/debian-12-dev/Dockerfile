@@ -93,7 +93,7 @@ RUN ln -s /opt/bitnami/moosh/moosh.php /usr/local/bin/moosh
 # Ensure Moosh is executable and test it
 RUN cd /opt/bitnami/moodle && moosh --list-commands || echo "Moosh installation failed"
 
-EXPOSE 8080 8443
+EXPOSE 8080
 
 ENTRYPOINT [ "/opt/bitnami/scripts/moodle/entrypoint.sh" ]
 CMD [ "/opt/bitnami/scripts/moodle/run.sh" ]
