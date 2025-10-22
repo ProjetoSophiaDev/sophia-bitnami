@@ -13,7 +13,7 @@ Docker desktop theme location
 \\wsl.localhost\docker-desktop\mnt\docker-desktop-disk\data\docker\volumes\sophiadev-mariadb_moodle_data\_data\theme
 ```
 
-## Usodo docker compose
+## Uso do docker compose
 Criar ou subir servidor local do Moodle
 ```bash
 docker compose up -d
