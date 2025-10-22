@@ -9,3 +9,17 @@ Docker desktop theme location
 - Site teste: https://sophia.adrianoruseler.com
 - Plugins instalados: https://github.com/ProjetoSophiaDev/moodle500plugins
 - Tema academi v5.0: https://github.com/ProjetoSophiaDev/academi5
+
+Criar ou subir servidor local do Moodle
+```bash
+docker compose up -d
+```
+Desligar servidor local do Moodle
+```bash
+docker compose down
+```
+
+Desligar e apagar dados do servidor local do Moodle
+```bash
+docker compose down -v
+```
