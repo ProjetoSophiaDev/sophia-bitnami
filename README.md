@@ -4,6 +4,8 @@ Bitnami container images for moodle
 - Site teste: https://sophia.adrianoruseler.com
 - Plugins instalados: https://github.com/ProjetoSophiaDev/moodle500plugins
 - Tema academi v5.0: https://github.com/ProjetoSophiaDev/academi5
+## Como usar
+Video descritivo: https://youtu.be/fRJDVfQGza4
   
 ## Instale o Docker Desktop
 - https://docs.docker.com/desktop/setup/install/windows-install/
