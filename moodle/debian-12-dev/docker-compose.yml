@@ -1,7 +1,7 @@
 # Copyright Broadcom, Inc. All Rights Reserved.
 # SPDX-License-Identifier: APACHE-2.0
 
-name: sophiadev-mariadb
+name: sophia-dev
 services:
   mariadb:
     # https://hub.docker.com/r/linuxserver/mariadb
